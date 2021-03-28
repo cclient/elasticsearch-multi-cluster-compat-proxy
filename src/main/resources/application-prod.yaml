@@ -27,12 +27,12 @@ es:
       auth: ""
       ssl: false
       remote-cluster-name: o
-      uri: http://192.168.10.18:9201
+      uri: http://127.0.0.1:9201
     es6:
       #      auth: "ApiKey ..........=="
       auth: ""
       ssl: false
-      uri: http://192.168.10.18:9200
+      uri: http://127.0.0.1:9200
       #     _index=filebeat_202101_log, _type=log
       extra-type: true
 #     _index=filebeat_202101_log, _type=_doc
