@@ -1,0 +1,14 @@
+{ "index" : { "_index" : "filebeat_202012_log", "_id" : "11" } }
+{ "field1" : "gateway index to es6 _id:11" }
+{ "delete" : { "_index" : "filebeat_202012_log", "_id" : "11" } }
+{ "create" : { "_index" : "filebeat_202012_log", "_id" : "12" } }
+{ "field1" : "gateway create to es6 _id:12" }
+{ "update" : {"_id" : "12", "_index" : "filebeat_202012_log"} }
+{ "doc" : {"field2" : "gateway update to es6 _id:12"} }
+{ "index" : { "_index" : "filebeat_202101_log", "_id" : "11" } }
+{ "field1" : "gateway index to es7 _id:11" }
+{ "delete" : { "_index" : "filebeat_202101_log", "_id" : "11" } }
+{ "create" : { "_index" : "filebeat_202101_log", "_id" : "12" } }
+{ "field1" : "gateway create to es7 _id:12" }
+{ "update" : {"_id" : "12", "_index" : "filebeat_202101_log"} }
+{ "doc" : {"field2" : "gateway update to es7 _id:12"} }

@@ -1,0 +1,39 @@
+server:
+  port: 9208
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/es_compat?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+    name: es_compat
+    username: es_compat
+    password: es_compat_passwd
+    sql-script-encoding: UTF-8
+    hikari:
+      connection-init-sql: SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57InnoDBDialect
+        format-sql: true
+es:
+  compat:
+    index:
+      split-by: _
+      date-boundary: 202101
+    es7:
+      #      auth: "Basic ...........=="
+      auth: ""
+      ssl: false
+      remote-cluster-name: o
+      uri: http://192.168.10.18:9201
+    es6:
+      #      auth: "ApiKey ..........=="
+      auth: ""
+      ssl: false
+      uri: http://192.168.10.18:9200
+      #     _index=filebeat_202101_log, _type=log
+      extra-type: true
+#     _index=filebeat_202101_log, _type=_doc
+#      extra-type: false

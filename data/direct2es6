@@ -1,0 +1,7 @@
+{ "index" : { "_index" : "filebeat_202012_log", "_type":"log", "_id" : "1" } }
+{ "field1" : "direct index to es6 _id:1" }
+{ "delete" : { "_index" : "filebeat_202012_log", "_type":"log", "_id" : "1" } }
+{ "create" : { "_index" : "filebeat_202012_log", "_type":"log", "_id" : "2" } }
+{ "field1" : "direct create to es6 _id:2" }
+{ "update" : {"_id" : "2", "_type":"log", "_index" : "filebeat_202012_log"} }
+{ "doc" : {"field2" : "direct update to es6 _id:2"} }
