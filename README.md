@@ -8,6 +8,10 @@ tested work on es6.8.14 and es7.10.2
 
 to update es cluster by rolling replace index,assign new index on es7 and close old index on es6 
 
+https://www.cnblogs.com/zihunqingxin/p/14563640.html
+
+https://www.cnblogs.com/zihunqingxin/p/14588939.html
+
 ### prepare env / 准备测试环境
 
 #### 1 start es6.8.14 启动es6.8.14
