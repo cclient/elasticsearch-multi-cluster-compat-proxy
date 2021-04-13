@@ -155,7 +155,7 @@ CREATE TABLE `index_info` (
 
 `mvn clean package -Dmaven.test.skip=true`
 
-`jar -jar target/elasticsearch-multi-cluster-compat-proxy-1.0.0.jar`
+`java -jar target/elasticsearch-multi-cluster-compat-proxy-1.0.0.jar`
 
 ---
 
@@ -647,9 +647,83 @@ CREATE TABLE `index_info` (
 }
   </code></pre>
 </details>
-#### `_search` by gateway 通过网关查询
+#### `_search` by gateway 通过网关查询-以es7标准
 
 `curl --header "Content-Type: application/json" "http://127.0.0.1:9208/filebeat_202012_log,filebeat_202101_log/_search?size=5&timeout=120s"`
+
+```json
+
+{
+    "took": 1136,
+    "timed_out": false,
+    "num_reduce_phases": 3,
+    "_shards": {
+        "total": 6,
+        "successful": 6,
+        "skipped": 0,
+        "failed": 0
+    },
+    "_clusters": {
+        "total": 2,
+        "successful": 2,
+        "skipped": 0
+    },
+    "hits": {
+        "total": {
+            "value": 4,
+            "relation": "eq"
+        },
+        "max_score": 1,
+        "hits": [
+            {
+                "_index": "filebeat_202101_log",
+                "_type": "_doc",
+                "_id": "2",
+                "_score": 1,
+                "_source": {
+                    "field1": "direct create to es7 _id:2",
+                    "field2": "direct update to es7 _id:2"
+                }
+            },
+            {
+                "_index": "filebeat_202101_log",
+                "_type": "_doc",
+                "_id": "12",
+                "_score": 1,
+                "_source": {
+                    "field1": "gateway create to es7 _id:12",
+                    "field2": "gateway update to es7 _id:12"
+                }
+            },
+            {
+                "_index": "o:filebeat_202012_log",
+                "_type": "log",
+                "_id": "12",
+                "_score": 1,
+                "_source": {
+                    "field1": "gateway create to es6 _id:12",
+                    "field2": "gateway update to es6 _id:12"
+                }
+            },
+            {
+                "_index": "o:filebeat_202012_log",
+                "_type": "log",
+                "_id": "2",
+                "_score": 1,
+                "_source": {
+                    "field1": "direct create to es6 _id:2",
+                    "field2": "direct update to es6 _id:2"
+                }
+            }
+        ]
+    }
+}
+
+```
+
+#### `_search` by gateway 通过网关查询-以es6标准
+
+`curl --header "Content-Type: application/json" "http://127.0.0.1:9208/filebeat_202012_*,filebeat_202101_*/log/_search?size=5&timeout=120s"`
 
 ```json
 

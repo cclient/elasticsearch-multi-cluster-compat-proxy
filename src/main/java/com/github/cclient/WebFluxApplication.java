@@ -20,29 +20,31 @@ import com.github.cclient.cache.IndexInfoCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import javax.annotation.PostConstruct;
+
 /**
  * @author cclient
  */
 @SpringBootApplication
 public class WebFluxApplication {
 
-	@Autowired
-	IndexInfoCache indexInfoCache;
+    @Autowired
+    IndexInfoCache indexInfoCache;
 
-	public static void main(String[] args) {
-		SpringApplication.run(WebFluxApplication.class);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(WebFluxApplication.class);
+    }
 
-	/**
-	 * 加载mysql内配置的索引信息
-	 */
-	@PostConstruct
+    /**
+     * 加载mysql内配置的索引信息
+     */
+    @PostConstruct
     public void init() {
-		try {
-			indexInfoCache.reFreshCaches();
-		}catch (Exception ex){
-			throw new RuntimeException("load index info error:"+ex);
-		}
+        try {
+            indexInfoCache.reFreshCaches();
+        } catch (Exception ex) {
+            throw new RuntimeException("load index info error:" + ex);
+        }
     }
 }

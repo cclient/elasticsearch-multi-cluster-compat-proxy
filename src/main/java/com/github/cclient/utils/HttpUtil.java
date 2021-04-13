@@ -5,6 +5,7 @@ import okhttp3.*;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.X509TrustManager;
 import java.io.IOException;
+
 /**
  * @author cclient
  */
@@ -26,20 +27,20 @@ public class HttpUtil {
         }
     }
 
-    public static String post(String url,String json,String auth,boolean isSSL) throws IOException {
+    public static String post(String url, String json, String auth, boolean isSSL) throws IOException {
         OkHttpClient client;
-        if (isSSL){
+        if (isSSL) {
             client = getUnsafeOkHttpClient();
-        }else{
+        } else {
             client = new OkHttpClient();
         }
-        Request.Builder builder= new Request.Builder().url(url);
-        if(json!=null&&!json.isEmpty()){
-            RequestBody body = RequestBody.create(json,JSON);
-            builder=builder.post(body);
+        Request.Builder builder = new Request.Builder().url(url);
+        if (json != null && !json.isEmpty()) {
+            RequestBody body = RequestBody.create(json, JSON);
+            builder = builder.post(body);
         }
-        if(auth!=null&&!auth.isEmpty()){
-            builder=builder.header("Authorization",auth);
+        if (auth != null && !auth.isEmpty()) {
+            builder = builder.header("Authorization", auth);
         }
         Request request = builder.build();
         try (Response response = client.newCall(request).execute()) {

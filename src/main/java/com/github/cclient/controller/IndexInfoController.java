@@ -22,7 +22,7 @@ public class IndexInfoController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public String refresh() {
-        Integer cacheIndexSize=indexInfoCache.reFreshCaches();
-        return "{\"size\": "+cacheIndexSize+"}";
+        Integer cacheIndexSize = indexInfoCache.reFreshCaches();
+        return "{\"size\": " + cacheIndexSize + "}";
     }
 }

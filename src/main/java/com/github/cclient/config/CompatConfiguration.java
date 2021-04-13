@@ -17,13 +17,12 @@ import javax.annotation.PostConstruct;
 @Slf4j
 @Data
 public class CompatConfiguration {
+    public static String DEFAULT_TYPE = "_doc";
     /**
      * 索引分隔符，例 filebeat_202103_log 分隔符为_
      */
     @Value("${es.compat.index.split-by}")
     private String indexSplitBy;
-
-    public static String DEFAULT_TYPE="_doc";
     /**
      * 索引日期分界
      * < 202101 elasticsearch 6.8
